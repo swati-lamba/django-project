@@ -1,0 +1,11 @@
+div#purpose-content {
+    width: 55%;
+    float: left;
+    margin-left: 10px;
+    min-height: 277px;
+}
+div#login {
+    width: 40%;
+    float: right;
+    min-height: 277px;
+}

@@ -1,0 +1,93 @@
+<!-- This page displays the list of all the plants listed by all the users
+ This page will be visible to logged in users with any role. -->
+{% extends "plant-sharing/base.html" %}
+{% load static %}
+{% block page-title %}Plants Listings{% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/logged-in.css" %}">
+    <link rel="stylesheet" href="{% static "css/search-plants.css" %}">
+{% endblock %}
+{% block extrascripts %}
+    <script src="{% static "js/search.js" %}"></script>
+{% endblock %}
+{% block global-search %}
+    <form id="search-bar" class="global-search" method="GET">
+        {% csrf_token %}
+        <input type="text" class="globalSearch" placeholder="Search.." size="70">
+        <input type="submit" value="Go!">
+    </form>
+{% endblock %}
+{% block primary-navigation %}
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Blogs</a></li>
+    <li><a href="{% url 'users:profile' request.session.username %}">My Profile</a></li>
+    <li><a href="{% url 'users:logout' %}">Logout</a></li>
+{% endblock %}
+
+{% block navigation %}
+    <div id="navigation">
+        <ul>
+            <li>
+                <a href="/plant-sharing/home" class="selected">Search Plants</a>
+            </li>
+            <li>
+                <a href="{% url "ps:my_listings" %}">My Listing</a>
+            </li>
+            <li>
+                <a href="/plant-sharing/messages">My Messages</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="search-plants">
+        <div id="search-form">
+            {% csrf_token %}
+            <select name="plant-types" class="plant-types">
+                <option class="default">Plant types</option>
+                <option value="rose">Red rose</option>
+                <option value="mint">Mint</option>
+            </select>
+            <select name="radius" class="distance-radius">
+                <option class="default">Distance Radius</option>
+                <option value="rose">2 miles</option>
+                <option value="mint">10 miles</option>
+            </select>
+            <input type="text" class="searchtext" placeholder="What are you looking for?">
+            <input type="submit" class="search" value="Search">
+        </div>
+        <table class="search-table">
+            <tr>
+                <th>Plant Type</th>
+                <th>Plant Image</th>
+                <th>Distance</th>
+                <th id="desc">Plant Description</th>
+                <th>Connect</th>
+            </tr>
+             {% for plant in plants_list %}
+                <tr>
+                    <td>{{ plant.name |truncatewords:"100" }}</td>
+                    <td><a href="#"><img src="{{ plant.imagePath }}" alt="" width="30" height="30"></a></td>
+                    <td>{{ plant.distance }}</td>
+                    <td>{{ plant.description |truncatewords:"200" }}</td>
+                    <td><a href="{% url "ps:plant_details" plant.id %}"><img
+                            src="{% static "media/img/misc/connect-icon.png" %}" alt="Comment" width="30" height="30"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if plants_list.count == 0 %}
+                No plants listed yet!
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}
+{% block ad3 %}
+    <a id="ad3" href="#">
+        <img src="{% static "media/img/ads/Sample-Sidebar-Ad.png" %}" alt="Ad3 picture" width="100" height="60"/>
+    </a>
+{% endblock %}
+{% block sidebar %}
+    {% include "actions/action/feed.html" %}
+{% endblock %}

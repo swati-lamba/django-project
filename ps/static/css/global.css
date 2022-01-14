@@ -1,0 +1,249 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    width:100%;
+}
+
+div#title-box {
+    float: left;
+    width: 55%;
+}
+
+div#title-box img {
+    float: left;
+    margin-left: 10px;
+    width: 10%;
+}
+img#logo {
+    height: 10%;
+}
+
+div#title-box h1 {
+    float: right;
+    text-align: center;
+    width:80%;
+}
+
+ul#primary-nav {
+    float: right;
+    width: 34%;
+    list-style-type: none;
+    margin: 20px 0 0 0;
+    padding: 0px;
+    font-size: 20px;
+}
+
+ul#primary-nav li {
+    float: left;
+    clear: right;
+    list-style-type: none;
+    padding: 10px;
+}
+
+ul#primary-nav li a {
+    display: block;
+}
+
+ul#primary-nav li a:hover {
+    color: darkgreen;
+    background-color: orchid;
+}
+
+ul#primary-nav li a.selected {
+    background-color: greenyellow;
+}
+
+.advertisement {
+    width: 100%;
+    overflow: scroll;
+    position: relative;
+    padding: 10px;
+}
+
+div#advertisement a img {
+    position: absolute;
+    vertical-align: middle;
+    max-width: 100%;
+    width: 100%;
+}
+
+div#footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: darkgray;
+   color: white;
+   text-align: justify-all;
+}
+
+div#social-media {
+   alignment: center;
+}
+
+ul#footer-nav{
+    float: left;
+    width: 30%;
+    list-style-type: none;
+    margin: 0 20px 0 0;
+    padding: 0px;
+    font-size: 15px;
+}
+
+input[type=text], select {
+  width: 70%;
+  padding: 12px 20px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 70%;
+    padding: 12px 20px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+    }
+
+input[type=email] {
+    padding: 12px 20px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+
+input[type=submit] {
+  width: 70%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px 12px;
+  margin: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+select{
+    background-color: darkseagreen;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+    table-layout: auto;
+    display: block;
+    min-width: 400px;
+    min-height: 140px;
+    max-height: 440px;
+}
+
+table td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+div#banner img {
+    height: 220px;
+        width: 100%
+}
+
+ul.messages {
+    font-weight: bold;
+    padding: 1em;
+    margin: 0;
+    list-style: none;
+}
+
+ul.messages li.success {
+    color: #4CAF50;
+}
+
+ul.messages li.info {
+    color: dodgerblue;
+}
+
+ul.messages li.warning {
+    color: red;
+}
+
+button {
+    color: darkslategray;
+    background-color: azure;
+}
+
+@media only screen and (max-width: 768px) {
+    h1{
+        font-size: 20px;
+        font-family: "Arial Hebrew Scholar";
+    }
+    div#banner img {
+        height: 10%;
+    }
+    ul#primary-nav{
+    float: left;
+    width: 100%;
+    list-style-type: none;
+    margin: 20px 10px 0 0;
+    padding-left: 50px;
+    font-size: 15px;
+    }
+    div#footer{
+        font-size: xx-small;
+    }
+    div#social-media a img{
+   width: 10px;
+        height: 10px;
+}
+   input[type=text] {
+        width: 100%;
+    }
+   input[type=password] {
+        width: 100%;
+    }
+   input[type=submit] {
+        width: 100%;
+    }
+
+   div#title-box > img{
+        margin-top: 20px;
+    }
+}

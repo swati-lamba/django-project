@@ -1,0 +1,43 @@
+<!-- Home view
+This page is the landing page for an anonymous user which displays the login component and the general information about the application. -->
+{% extends "plant-sharing/base.html" %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/anonymous-homepage.css" %}">
+{% endblock %}
+
+{% block primary-navigation %}
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Blogs</a></li>
+{% endblock %}
+
+{% block content %}
+    <div id="purpose-content">
+        <h2>Get connected to the fellow plant enthusiasts near you!</h2>
+        <p>This application will provide a platform to all the gardening enthusiasts to share the extra plants, saplings
+            or cuttings with the fellow enthusiasts near their location or area.
+        </p>
+        <span>How it will help:</span>
+        <ul>
+            <li> Provide a platform enabling distribution of free plants to people.</li>
+            <li>Socialize and meet like-minded home gardeners.</li>
+            <li>Will promote green and lessen pollution/global warming</li>
+        </ul>
+    </div>
+    <div id="login">
+        <h2>Sign in to access your account.</h2>
+        <form method="POST" action="{% url "users:login" %}">
+            {% csrf_token %}
+            <input type="text" name="username" required maxlength="45" minlength="4" placeholder="Enter Username">
+            <br>
+            <input type="password" name="pw" required maxlength="45" minlength="5" placeholder="Enter Password">
+            <br>
+            <input type="submit" name="submit" value="Login">
+            <br>
+            New User? <a href="{% url 'users:register' %}">Register here!</a>
+            <br>
+            <a href="#">Forgot username or password?</a>
+        </form>
+    </div>
+{% endblock %}

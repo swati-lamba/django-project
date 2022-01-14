@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- This is the base template used by all other templates.
+This is divided into various sections:
+1. Header : Contains Logo and Heading for the website is the left and primary navigation to the right (common across the website)
+2. Banner : Contains an image of plants (common across the website)
+3. The main content.
+4. Some advertisements (common across the website)
+5. Footer section containing Copyright text, Navigation links and social media links -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="plants, plant share, share plants, share plant platform">
+    <title>Plant Sharing Platform | {% block page-title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/global.css" %}">
+    {% block extracss %}{% endblock %}
+    <script src="{% static "js/jquery-3.6.0.js" %}"></script>
+    {% block extrascripts %}{% endblock %}
+</head>
+<body>
+<div id="header">
+    <div id="title-box">
+        <img id="logo" src="{% static "media/img/logo.png" %}"
+             width="220" height="220"
+             alt="PlantShare Logo"/>
+        <h1 id="heading">Welcome to Plant Share Community {{ request.session.username }}</h1>
+    </div>
+    <ul id="primary-nav">
+        {% block primary-navigation %} {% endblock %}
+    </ul>
+</div>
+{% block global-search %} {% endblock %}
+<div id="banner">
+    <img src="{% static "media/img/banner/banner-desktop.jpg" %}" alt="Banner showing plant pictures"/>
+</div>
+<div id="main-content">
+    {% block messages %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}
+    {% block navigation %} {% endblock %}
+    {% block content %} {% endblock %}
+    {% block ad3 %} {% endblock %}
+    {% block sidebar %}{% endblock %}
+
+    <div class="advertisement">
+        <a href="#">
+            <img id="ad1" src="{% static "media/img/ads/Sample-Sidebar-Ad.png" %}" alt="Ad1 picture" width="700"
+                 height="60"/>
+        </a>
+        <a href="#">
+            <img id="ad2" src="{% static "media/img/ads/Sample-Sidebar-Ad.png" %}" alt="Ad2 picture" width="700"
+                 height="60"/>
+        </a>
+    </div>
+    <div id="footer">
+        <p id="copyright">© Copyright 2021 Plant Sharing Platform, Copyright Registration Online provides information
+            and software only. Copyright Registration Online is not a "lawyer referral service" , "law firm" and does
+            not provide any legal advice or participate in any legal representation. Use of Copyright Registration
+            Online is subject to our Privacy Policy | Terms and Conditions.
+            <br>Feel Free to contact us at (XXX)XXX-XXXX</p>
+        <ul id="footer-nav">
+            <li><a href="#">About Us</a></li>
+        </ul>
+        <div id="social-media">
+            <a href="#">
+                <img src="{% static "media/img/footer/sns/fb.jpeg" %}" alt="fb" width="30" height="30">
+            </a>
+            <a href="#">
+                <img src="{% static "media/img/footer/sns/instagram.jpeg" %}" alt="insta" width="30" height="30">
+            </a>
+            <a href="#">
+                <img src="{% static "media/img/footer/sns/twitter.png" %}" alt="sns" width="30" height="30">
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+div#search-result {
+    float: left;
+    width: 70%;
+}
+
+div#main-content {
+display: flex;
+}

@@ -1,0 +1,57 @@
+<!-- Add view, Edit view, Delete view
+This page displays the form in which is used to view, add, edit and delete the plant listing.
+       Delete functionality is only visible to logged in user with role: admin in edit view
+ -->
+{% extends "../plant-sharing/base.html" %}
+{% load static %}
+{% block page-title %}Plants Listings{% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/logged-in.css" %}">
+    <script src="{% static "css/profile.css" %}"></script>
+{% endblock %}
+
+{% block primary-navigation %}
+    <li><a href="/plant-sharing">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Blogs</a></li>
+{% endblock %}
+{% block content %}
+    <div id="profile">
+        <h3>Profile for {{ user.username }}</h3>
+        <p>* = required</p>
+        <div id="registration">
+            <form action="{% url 'users:save' user.username %}" class="register" method="POST">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" name="username" required disabled value="{{ user.username }}">
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" maxlength="20" minlength="4">
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" value="{{ user.email }}">
+                <br>
+                <label for="fname">First name:</label>
+                <input type="text" name="fname" maxlength="20" minlength="4"  value="{{ user.first_name }}">
+                <br>
+                <label for="lname">Last name:</label>
+                <input type="text" name="lname" maxlength="20" minlength="4"  value="{{ user.last_name }}">
+                <br>
+                <label for="gender" >Gender:</label>
+                <input type="radio" name="gender" value="male"  {% if user.userextradetails.gender == 'male'  %} checked {% endif %} required>Male
+                <input type="radio" name="gender" value="female" {% if user.userextradetails.gender == 'female'  %} checked {% endif %} >Female
+                <input type="radio" name="gender" value="other" {% if user.userextradetails.gender == 'other'  %} checked {% endif %} >Other
+                <br>
+                {% if request.session.role == 'admin' %}
+                    <label for="role">Role:</label>
+                    <select name="role">
+                        <option value="admin" {% if user.userextradetails.role == 'admin'  %} selected {% endif %}>Admin</option>
+                        <option value="regular" {% if user.userextradetails.role == 'regular'  %} selected {% endif %}>Regular</option>
+                    </select>
+                    <br>
+                {% endif %}
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+{% endblock %}

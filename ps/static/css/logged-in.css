@@ -1,0 +1,99 @@
+form#search-bar {
+    float: right;
+    width: 206px;
+}
+
+form#search-bar input[type=submit] {
+    width: 40px;
+    padding: 10px 5px 12px 2px;
+}
+
+div#navigation {
+    float: left;
+    width: 15%;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: scroll;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+div#navigation ul{
+    float: left;
+    list-style-type: none;
+    background-color: azure;
+    width: 100%;
+}
+
+div#navigation ul li a{
+  text-decoration: darkseagreen;
+  font-size: 20px;
+  color: darkgreen;
+  display: block;
+  transition: 0.3s;
+}
+
+div#navigation ul li{
+  padding: 10px;
+}
+
+div#navigation ul li a.selected{
+background-color: greenyellow;
+}
+
+ div#navigation ul li a:hover {
+     color: orange;
+ }
+
+a#ad3 {
+    float: right;
+    height: 600px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+a#ad3 img{
+    alignment: center;
+    height: 100%;
+    width: 100%;
+}
+
+#comment-section {
+    display: table-caption;
+}
+
+#recent {
+    display: table-caption;
+}
+
+@media only screen and (max-width: 1169px) {
+    a#ad3 {
+        display: none;
+    }
+
+    div#navigation ul li a{
+      text-decoration: darkseagreen;
+      font-size: 15px;
+      color: darkgreen;
+      display: block;
+      transition: 0.3s;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    div#navigation ul li{
+      padding: 5px;
+    }
+    div#navigation ul{
+        display: flex;
+        padding: 5px;
+    }
+    div#navigation{
+        overflow-x: visible;
+        padding:0;
+        width: 100%;
+    }
+}

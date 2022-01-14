@@ -1,0 +1,94 @@
+<!-- Detail view
+This page displays the data of a particular plant record and gives option of an edit button to go to the editable form page.
+ -->
+{% extends "plant-sharing/base.html" %}
+{% load humanize %}
+{% load static %}
+{% block page-title %}Plants Listings{% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/logged-in.css" %}">
+    <link rel="stylesheet" href="{% static "css/search-plants.css" %}">
+    <link rel="stylesheet" href="{% static "css/add-plants.css" %}">
+    <link rel="stylesheet" href="{% static "css/my-listings.css" %}">
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="{% static "js/plantdetails.js" %}"></script>
+    <script src="{% static "js/comments.js" %}"></script>
+{% endblock %}
+
+{% block primary-navigation %}
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Blogs</a></li>
+    <li><a href="#">My Profile</a></li>
+    <li><a href="{% url 'users:logout' %}" >Logout</a></li>
+{% endblock %}
+
+{% block navigation %}
+    <div id="navigation">
+        <ul>
+            <li>
+                <a href="/plant-sharing/home">Search Plants</a>
+            </li>
+            <li>
+                <a href="{% url "ps:my_listings" %}" class="selected">My Listing</a>
+            </li>
+            <li>
+                <a href="/plant-sharing/messages">My Messages</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="my-listings">
+        <ul>
+            <li><a href="{% url "ps:my_listings" %}">My Listing</a></li>
+            <li><a href="{% url "ps:plant_details" plant.id %}" class="selected">View Details</a></li>
+            <li><a href="{% url "ps:plant_add" %}"><img src="{% static "media/img/misc/add-button.png" %}" alt=""
+                                                        width="30" height="30"></a></li>
+        </ul>
+        <h3>Below are the plant details:</h3>
+        <p>
+            Plant Name: {{ plant.name }}<br>
+            Description: {{ plant.description }}<br>
+            Status: {{ plant.status }}<br>
+            Posted by: {{ plant.user.username }}<br>
+            Last Updated by: {{ plant.updatedBy }}<br>
+            Updated On: {{ plant.lastUpdateOn }}<br>
+            Created On: {{ plant.datePosted }}<br>
+            Personal Notes: {{ plant.notes }}
+        <form action="{% url "ps:my_listings" %}" method="get">
+            <button type="submit">Back</button>
+            {% if request.session.role == 'admin' or request.session.username == plant.user.username %}
+                <button type="submit" formaction="{% url "ps:plant_edit" plant.id %}">Click to edit</button>
+            {% endif %}
+        </form>
+        </p>
+    </div>
+
+    <div id="comment-section">
+        <h3>Comment Section</h3>
+        <form class="new-comment" action="{% url "ps:post_comment" plant.id %}" method="get">
+            <textarea id="newComment" value="Comment" minlength="5"></textarea>
+            <button type="submit">Post</button>
+        </form>
+        {% if comments != 'None' %}
+            <div id="all-comments">
+                {% for comment in comments %}
+                    <div class="each-comment" data-comment-id="{{  comment.id }}">
+                        <a href="{% url "users:profile" comment.postedBy %}">{{  comment.postedBy }}</a> posted {{  comment.lastUpdateOn| naturaltime }}:
+                       <div class="comment-text">{{ comment.commentText }}</div>
+                        {% if request.session.role == 'admin' or request.session.username == comment.postedBy.username %}
+                            <div id="edit-comment">Click to <a data-c-id="{{  comment.id }}" href="{% url "ps:edit_comment" comment.id %}">edit the post</a></div>
+                            <div id="delete-comment">Click to <a href="{% url "ps:delete_comment" comment.id %}">delete the post</a></div>
+                        {% endif %}
+                    </div>
+                    {%  empty %}
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

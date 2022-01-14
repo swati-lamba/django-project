@@ -1,0 +1,29 @@
+div#my-listings form {
+    display: block;
+    width: 700px;
+}
+
+div#my-listings h3{
+   color: darkgreen;
+}
+
+div#my-listings form input[type=text], textarea{
+    width: 198px;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+div#my-listings form textarea{
+    width: 170px;
+    height: 80px;
+    padding-bottom: 30px;
+}
+div#my-listings form input[type=submit]{
+    width: 30%;
+    margin-top: 40px;
+    float: right;
+    margin-right: 200px;
+}
+div#my-listings form img {
+    margin-left: 30px;
+}

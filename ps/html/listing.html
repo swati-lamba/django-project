@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- This is the design 2 where the logged-in user can go via navigation clicking on My Listings and make changes in it.
+This is divided into various sections:
+1. Header : Contains Logo and Heading for the website is the left and primary navigation to the right (common across the website)
+2. Banner : Contains an image of plants (common across the website)
+3. The main content is divided into two sections:
+  3(a) Primary Navigation
+  3(b) User's added plant listings section and a button to plant listing (Main functionality of the page)
+4. Some advertisements (common across the website)
+5. Footer section containing Copyright text, Navigation links and social media links -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="keywords" content="plants, plant share, share plants, share plant platform">
+        <title>Plant Sharing Platform</title>
+        <link rel="stylesheet" href="../static/css/global.css">
+        <link rel="stylesheet" href="../static/css/logged-in.css">
+        <link rel="stylesheet" href="../static/css/my-listings.css">
+    </head>
+    <body>
+        <!-- The header component goes here -->
+         <div id="header">
+             <div id="title-box">
+                <img id="logo" src="../static/media/img/logo.png"
+                   width="220" height="220"
+                    alt="PlantShare Logo"/>
+                <h1 id="heading">Welcome to plant share community</h1>
+             </div>
+             <ul id="primary-nav">
+                 <li><a href="home.html" class="selected">Home</a> </li>
+                 <li><a href="#">About Us</a> </li>
+                 <li><a href="#">Blogs</a> </li>
+                 <li><a href="#">My Profile</a> </li>
+                 <li><a href="index.html">Logout</a> </li>
+             </ul>
+         </div>
+        <div id="banner">
+             <img src="../static/media/img/banner/banner-desktop.jpg" alt="Banner showing plant pictures"/>
+         </div>
+         <div id="main-content">
+            <div id="navigation">
+                <ul>
+                    <li>
+                        <a href="home.html">Search Plants</a>
+                    </li>
+                    <li>
+                        <a href="listing.html" class="selected">My Listing</a>
+                    </li>
+                    <li>
+                        <a href="messages.html">My Messages</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="my-listings">
+                    <ul>
+                        <li><a href="listing.html" class="selected">My Listing</a></li>
+                        <li><a href="addListing.html">Add plant</a></li>
+                        <li>
+                            <a href="addListing.html">
+                                <img src="../static/media/img/misc/add-button.png" alt="" width="30" height="30">
+                            </a>
+                        </li>
+                    </ul>
+                    <table>
+                        <tr>
+                            <th>Plant Name</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Expired</th>
+                            <th>Edit/Remove</th>
+                        </tr>
+                        <tr>
+                            <td>Red rose</td>
+                            <td><a href="#"><img src="../static/media/img/misc/image-icon.png" alt="" width="30" height="30"></a></td>
+                            <td>Red rose cuttings</td>
+                            <td>10 miles</td>
+                            <td>New</td>
+                            <td><a href="#"><img src="../static/media/img/misc/edit-icon.png" alt="Edit" width="30" height="30"></a></td>
+                        </tr>
+                         <tr>
+                            <td>Red rose</td>
+                            <td><a href="#"><img src="../static/media/img/misc/image-icon.png" alt="" width="30" height="30"></a></td>
+                            <td>Red rose cuttings</td>
+                            <td>10 miles</td>
+                            <td>Given</td>
+                            <td><a href="#"><img src="../static/media/img/misc/edit-icon.png" alt="Edit" width="30" height="30"></a></td>
+                        </tr>
+
+                    </table>
+                </div>
+         </div>
+        <a id="ad3" href="#">
+               <img src="../static/media/img/ads/Sample-Sidebar-Ad.png" alt="Ad3 picture" width="100" height="60"/>
+        </a>
+        <div class="advertisement">
+            <a href="#">
+               <img id="ad1" src="../static/media/img/ads/Sample-Sidebar-Ad.png" alt="Ad1 picture" width="700" height="60"/>
+            </a>
+            <a href="#">
+                <img id="ad2" src="../static/media/img/ads/Sample-Sidebar-Ad.png" alt="Ad2 picture" width="700" height="60"/>
+            </a>
+        </div>
+         <div id="footer">
+           <p id="copyright">© Copyright 2021 Plant Sharing Platform, Copyright Registration Online provides information and software only. Copyright Registration Online is not a "lawyer referral service" , "law firm" and does not provide any legal advice or participate in any legal representation. Use of Copyright Registration Online is subject to our Privacy Policy | Terms and Conditions.
+                <br>Feel Free to contact us at (XXX)XXX-XXXX</p>
+             <ul id="footer-nav">
+                 <li> <a href="#" >About Us</a> </li>
+             </ul>
+             <div id="social-media">
+                 <a href="#">
+                     <img src="../static/media/img/footer/sns/fb.jpeg" alt="fb" width="30" height="30">
+                 </a>
+                <a href="#">
+                     <img src="../static/media/img/footer/sns/instagram.jpeg" alt="insta" width="30" height="30">
+                </a>
+                 <a href="#">
+                    <img src="../static/media/img/footer/sns/twitter.png" alt="sns" width="30" height="30">
+                 </a>
+             </div>
+         </div>
+    </body>
+</html>

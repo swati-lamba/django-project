@@ -1,0 +1,16 @@
+#registration form input {
+ width: 190px;
+}
+
+#registration form input[type=email] {
+    margin-left: 30px;
+}
+
+#registration form input[type=radio] {
+    margin-left: 30px;
+    width: 40px;
+}
+
+#registration {
+ margin-left: 30px;
+}

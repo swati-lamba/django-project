@@ -1,0 +1,53 @@
+<!-- Add view, Edit view, Delete view
+This page displays the form in which is used to view, add, edit and delete the plant listing.
+       Delete functionality is only visible to logged in user with role: admin in edit view
+ -->
+{% extends "../plant-sharing/base.html" %}
+{% load static %}
+{% block page-title %}Plants Listings{% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/logged-in.css" %}">
+    <script src="{% static "css/profile.css" %}"></script>
+{% endblock %}
+
+{% block primary-navigation %}
+    <li><a href="/plant-sharing">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Blogs</a></li>
+{% endblock %}
+{% block content %}
+    <div id="profile">
+        <h3>Profile for {{ user.username }}</h3>
+        <p>* = required</p>
+        <dl>
+            <dt>Username:</dt>
+            <dd>{{ user.username }}</dd>
+
+            <dt>Role:</dt>
+            <dd>{{ user.userextradetails.role }}</dd>
+
+            <dt>FirstName:</dt>
+            <dd>{{ user.first_name }}</dd>
+
+            <dt>LastName:</dt>
+            <dd>{{ user.last_name }}</dd>
+
+            <dt>Email:</dt>
+            <dd>{{ user.email }}</dd>
+
+            <dt>Gender:</dt>
+            <dd>{{ user.userextradetails.gender }}</dd>
+
+        </dl>
+        {% if request.session.role == 'admin' or request.session.username == user.username %}
+            <form action="{% url 'users:editProfile' user.username %}" class="register" method="GET">
+                {% csrf_token %}
+                <input type="submit" value="Click to Edit Profile">
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "actions/action/feed.html" %}
+{% endblock %}

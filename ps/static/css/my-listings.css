@@ -1,0 +1,39 @@
+div#my-listings {
+    float: left;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-top: 40px;
+    padding-left: 40px;
+}
+
+div#my-listings ul{
+    list-style-type: none;
+    display: flex;
+    background-color: azure;
+}
+
+div#my-listings ul a{
+    padding: 0 8px;
+    text-align: center;
+    line-height: 2.5;
+    text-decoration: darkseagreen;
+    font-size: 18px;
+    color: darkgreen;
+    display: block;
+    transition: 0.3s;
+}
+
+div#my-listings ul a.selected{
+    background-color: greenyellow;
+}
+
+div#my-listings ul a:hover{
+     color: orange;
+}
+
+@media only screen and (max-width: 768px) {
+    div#my-listings {
+        padding-top:0;
+    }
+}
